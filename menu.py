@@ -20,6 +20,7 @@ search_menu_options = {
 }
 
 
+# Searches and displays all books
 def search_all_books():
     # Use a data access object (DAO) to 
     # abstract the retrieval of data from 
@@ -32,6 +33,7 @@ def search_all_books():
     print("The end of books.")
 
 
+# Searches and displays books by title
 def search_by_title():
     title = input("What is the exact book title that you are looking for?\n")
     results = list(book_dao.findByTitle(title))
@@ -45,6 +47,7 @@ def search_by_title():
     print("The end.")
 
 
+# Searches and displays books by publisher
 def search_by_publisher():
     publisher = input("Enter the publisher name to search for books:\n")
     results = list(book_dao.findByPublisher(publisher))
@@ -58,6 +61,7 @@ def search_by_publisher():
     print("The end.")
 
 
+# Searches and displays books within a specified price range
 def search_by_price_range():
     try:
         min_price = float(input("Enter the minimum price:\n"))
@@ -76,6 +80,7 @@ def search_by_price_range():
     print("The end.")
 
 
+# Searches and displays books by title and publisher
 def search_by_title_and_publisher():
     title = input("Enter the book title:\n")
     publisher = input("Enter the publisher name:\n")
@@ -90,6 +95,7 @@ def search_by_title_and_publisher():
     print("The end.")
 
 
+# Prints the main menu options
 def print_menu():
     print()
     print("Please make a selection")
@@ -100,6 +106,7 @@ def print_menu():
     print()
 
 
+# Prints the search menu options
 def print_search_menu():
     print()
     print("Please make a selection")
@@ -110,6 +117,7 @@ def print_search_menu():
     print()
 
 
+# Handles adding a new publisher
 def option1():
     name = input("Enter the publisher's name: ")
     phone = input("Enter the publisher's phone number: ")
@@ -121,6 +129,7 @@ def option1():
         print("Failed to add publisher.")
 
 
+# Handles adding a new book
 def option2():
     isbn = input("Enter the book's ISBN: ")
     title = input("Enter the book's title: ")
@@ -135,6 +144,7 @@ def option2():
         print("Failed to add book.")
 
 
+# Handles editing an existing book
 def option3():
     isbn = input("Enter the ISBN of the book to update: ")
     print("Enter new details for the book (leave blank to keep current value):")
@@ -152,6 +162,7 @@ def option3():
         print("No book found with the provided ISBN, or no new data given.")
 
 
+# Handles deleting an existing book
 def option4():
     isbn = input("Enter the ISBN of the book to delete: ")
     result = book_dao.deleteBook(isbn)
@@ -161,6 +172,7 @@ def option4():
         print("No book found with the provided ISBN or failed to delete.")
 
 
+# Handles the sub-menu for searching books
 def option5():
     # A sub-menu shall be printed
     # and prompt user selection
