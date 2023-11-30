@@ -104,14 +104,21 @@ def print_search_menu():
     print()
     print("Please make a selection")
     for key in search_menu_options.keys():
-        print(str(key)+'.', search_menu_options[key], end="  ")
+        print(str(key) + '.', search_menu_options[key], end="  ")
     print()
     print("The end of search menu options")
     print()
 
 
 def option1():
-    print('Handle option \'Option 1\'')
+    name = input("Enter the publisher's name: ")
+    phone = input("Enter the publisher's phone number: ")
+    city = input("Enter the publisher's city: ")
+    result = book_dao.add_publisher(name, phone, city)
+    if result:
+        print("Publisher added successfully.")
+    else:
+        print("Failed to add publisher.")
 
 
 def option2():
