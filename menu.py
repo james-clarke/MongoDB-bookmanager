@@ -46,6 +46,20 @@ def search_by_title():
     print("The end.")
 
 
+def search_by_publisher():
+    publisher = input("Enter the publisher name to search for books:\n")
+    results = list(book_dao.findByPublisher(publisher))
+
+    # Display results
+    if len(results) > 0:
+        print("Books published by", publisher, ":")
+        for book in results:
+            print(book['ISBN'], book['title'])
+    else:
+        print("No books found for the publisher:", publisher)
+    print("The end.")
+
+
 def print_menu():
     print()
     print("Please make a selection")
@@ -82,11 +96,24 @@ def option5():
     print_search_menu()
 
     # user selection of options and actions
+    option = ''
+    try:
+        option = int(input('Enter your choice: '))
+    except KeyboardInterrupt:
+        print('Interrupted')
+        sys.exit(0)
+    except:
+        print('Wrong input. Please enter a number ...')
 
-    # Assume the option: search all books was chosen
-    print("Search Option 1: all books were chosen.")
-    search_all_books()
-    search_by_title()
+    if option == 1:
+        print('Search Option 1: all books were chosen.')
+        search_all_books()
+    elif option == 2:
+        print('Search Option 2: search books by title.')
+        search_by_title()
+    elif option == 3:
+        print('Search Option 3: search books by publisher.')
+        search_by_publisher()
 
 
 if __name__ == '__main__':
