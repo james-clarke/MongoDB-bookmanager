@@ -76,6 +76,20 @@ def search_by_price_range():
     print("The end.")
 
 
+def search_by_title_and_publisher():
+    title = input("Enter the book title:\n")
+    publisher = input("Enter the publisher name:\n")
+    results = list(book_dao.findByTitleAndPublisher(title, publisher))
+    # Display results
+    if len(results) > 0:
+        print(f"Books with title '{title}' published by '{publisher}':")
+        for book in results:
+            print(book['ISBN'], book['title'])
+    else:
+        print(f"No books found with title '{title}' published by '{publisher}'.")
+    print("The end.")
+
+
 def print_menu():
     print()
     print("Please make a selection")
@@ -133,6 +147,14 @@ def option5():
     elif option == 4:
         print('Search Option 3: search books by price range.')
         search_by_price_range()
+    elif option == 5:
+        print('Search Option 3: search books by price range.')
+        search_by_title_and_publisher()
+    elif option == 6:
+        print('Thanks your for using our database services! Bye')
+        exit()
+    else:
+        print('Invalid option. Please enter a number between 1 and 6.')
 
 
 if __name__ == '__main__':

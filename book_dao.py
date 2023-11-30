@@ -19,3 +19,8 @@ def findByPublisher(book_publisher):
 def findByPriceRange(min_price, max_price):
     results = collection.find({'price': {'$gte': min_price, '$lte': max_price}})
     return results
+
+
+def findByTitleAndPublisher(book_title, publisher_name):
+    results = collection.find({'title': book_title, 'published_by': publisher_name})
+    return results
