@@ -122,7 +122,17 @@ def option1():
 
 
 def option2():
-    print('Handle option \'Option 2\'')
+    isbn = input("Enter the book's ISBN: ")
+    title = input("Enter the book's title: ")
+    year = int(input("Enter the year of publication: "))
+    published_by = input("Enter the publisher's name: ")
+    previous_edition = input("Enter the ISBN of the previous edition (or leave blank if none): ")
+    price = float(input("Enter the price of the book: "))
+    result = book_dao.add_book(isbn, title, year, published_by, previous_edition, price)
+    if result:
+        print("Book added successfully.")
+    else:
+        print("Failed to add book.")
 
 
 def option5():

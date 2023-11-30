@@ -35,3 +35,14 @@ def add_publisher(name, phone, city):
     except Exception as e:
         print("An error occurred:", e)
         return None
+
+
+def add_book(isbn, title, year, published_by, previous_edition, price):
+    book_data = {'ISBN': isbn, 'title': title, 'year': year, 'published_by': published_by,
+                 'previous_edition': previous_edition, 'price': price}
+    try:
+        result = collection.insert_one(book_data)
+        return result
+    except Exception as e:
+        print("An error occurred:", e)
+        return None
