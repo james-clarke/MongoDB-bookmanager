@@ -1,4 +1,5 @@
 from pymongo_connector import collection
+from pymongo_connector import publisher_collection
 
 
 def findAll():
@@ -24,3 +25,13 @@ def findByPriceRange(min_price, max_price):
 def findByTitleAndPublisher(book_title, publisher_name):
     results = collection.find({'title': book_title, 'published_by': publisher_name})
     return results
+
+
+def add_publisher(name, phone, city):
+    publisher = {'name': name, 'phone': phone, 'city': city}
+    try:
+        result = publisher_collection.insert_one(publisher)
+        return result
+    except Exception as e:
+        print("An error occurred:", e)
+        return None
