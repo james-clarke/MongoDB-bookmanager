@@ -114,7 +114,7 @@ def option1():
     name = input("Enter the publisher's name: ")
     phone = input("Enter the publisher's phone number: ")
     city = input("Enter the publisher's city: ")
-    result = book_dao.add_publisher(name, phone, city)
+    result = book_dao.addPublisher(name, phone, city)
     if result:
         print("Publisher added successfully.")
     else:
@@ -128,11 +128,37 @@ def option2():
     published_by = input("Enter the publisher's name: ")
     previous_edition = input("Enter the ISBN of the previous edition (or leave blank if none): ")
     price = float(input("Enter the price of the book: "))
-    result = book_dao.add_book(isbn, title, year, published_by, previous_edition, price)
+    result = book_dao.addBook(isbn, title, year, published_by, previous_edition, price)
     if result:
         print("Book added successfully.")
     else:
         print("Failed to add book.")
+
+
+def option3():
+    isbn = input("Enter the ISBN of the book to update: ")
+    print("Enter new details for the book (leave blank to keep current value):")
+    title = input("New title: ")
+    year = input("New year of publication: ")
+    year = int(year) if year else None
+    published_by = input("New publisher's name: ")
+    previous_edition = input("New ISBN of the previous edition: ")
+    price = input("New price: ")
+    price = float(price) if price else None
+    result = book_dao.editBook(isbn, title, year, published_by, previous_edition, price)
+    if result and result.matched_count:
+        print("Book updated successfully.")
+    else:
+        print("No book found with the provided ISBN, or no new data given.")
+
+
+def option4():
+    isbn = input("Enter the ISBN of the book to delete: ")
+    result = book_dao.deleteBook(isbn)
+    if result and result.deleted_count:
+        print("Book deleted successfully.")
+    else:
+        print("No book found with the provided ISBN or failed to delete.")
 
 
 def option5():
